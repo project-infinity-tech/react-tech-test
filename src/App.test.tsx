@@ -1,10 +1,9 @@
 import { test, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 
-test('Renders our dynamic data', async () => {
+test('Renders our static data', async () => {
   render(<App />);
 
-  // TODO this should maybe find the element...?
-  expect('Static').toBeInTheDocument();
+  await waitFor(() => expect(screen.getByText('Static')).toBeInTheDocument());
 });
